@@ -1,22 +1,16 @@
-# Lista_de_Filmes
-Repositório para que o usuário possa pesquisar pesquisar filmes e salvar uma lista de favoritos, conecta com o TMDb.
-Aplicação desenvolvida em Python (FastAPI) com PostgreSQL e SQLModel, que permite ao usuário pesquisar filmes e salvar seus favoritos em uma lista pessoal.
-O projeto foi estruturado com foco em boas práticas de desenvolvimento Full Stack, seguindo padrões de organização, rotas bem definidas e persistência de dados.
-# 🎬 Desafio Elite Dev — Verzel
+# 🎬 Lista de Filmes  
 
-API desenvolvida para o **Desafio Elite Dev (Verzel)**, com o objetivo de validar conhecimentos Full Stack em **FastAPI (Python)**, **PostgreSQL** e integração com a **API do The Movie Database (TMDb)**.  
-O backend foi implementado seguindo boas práticas de arquitetura, segurança e documentação interativa via Swagger.
+Aplicação Full Stack desenvolvida para o **Desafio Elite Dev (Verzel)**.  
+Permite ao usuário **pesquisar filmes pela API do TMDb** e **salvar seus favoritos** em uma lista pessoal.  
+O backend foi construído em **Python (FastAPI)** com **PostgreSQL + SQLModel**, seguindo boas práticas de arquitetura, segurança e documentação interativa via **Swagger**.
 
 ---
 
-## 🚀 Visão Geral
-
-A aplicação é uma **Lista de Filmes** que permite:
-
-- Buscar filmes pela API do **TMDb**.  
-- Criar e listar **usuários**.  
-- Adicionar ou remover **filmes favoritos** de um usuário.  
-- Gerar uma **página compartilhável com os favoritos** de cada usuário (HTML ou JSON).  
+## 🚀 Funcionalidades Principais
+- 🔍 Buscar filmes pela API do **TMDb**  
+- 👤 Criar e listar **usuários**  
+- ⭐ Adicionar ou remover **filmes favoritos**  
+- 🌐 Gerar uma **página pública** com os favoritos de cada usuário (HTML ou JSON)
 
 Toda a persistência é feita com **PostgreSQL**, utilizando **SQLModel** como ORM.
 
@@ -33,7 +27,7 @@ Toda a persistência é feita com **PostgreSQL**, utilizando **SQLModel** como O
 | Autenticação de Senha | **Passlib (bcrypt)** |
 | Variáveis de Ambiente | **python-dotenv** |
 | Testes via Interface | **Swagger UI (/docs)** |
-| Deploy Opcional | **Render**, **Vercel (via frontend)** ou **Railway** |
+| Deploy Opcional | **Render**, **Vercel (frontend)** ou **Railway** |
 
 ---
 
@@ -62,8 +56,7 @@ backend/
 ├── requirements.txt # Dependências do projeto
 └── README.md
 
-yaml
-Copiar código
+
 
 ---
 
@@ -78,30 +71,27 @@ Copiar código
 
 ### 2️⃣ Clonar o repositório
 
-```bash
-git clone https://github.com/emillyn-dev/desafio-elite-dev.git
+
+git clone https://github.com/emillyn-baruta/Lista_de_Filmes
 cd desafio-elite-dev/backend
 3️⃣ Criar e ativar ambiente virtual
-bash
-Copiar código
+
 python -m venv venv
 venv\Scripts\activate     # Windows
 # ou
 source venv/bin/activate  # Linux/Mac
 4️⃣ Instalar dependências
-bash
-Copiar código
+
 pip install -r requirements.txt
 5️⃣ Configurar o arquivo .env
-Na raiz do projeto (backend/), crie um arquivo .env com o seguinte conteúdo:
+Na raiz do projeto (backend/), crie um arquivo chamado .env com o seguinte conteúdo:
 
-bash
-Copiar código
 DATABASE_URL=postgresql+psycopg2://postgres:SENHA@localhost:5432/NOMEDOBANCO
 TMDB_API_KEY=sua_chave_tmdb_aqui
+💡 Nota: Caso tenha dúvidas sobre onde encontrar sua senha do PostgreSQL ou gerar a TMDB API Key, veja a seção 📄 Detalhes sobre o .env.
+
 6️⃣ Rodar a aplicação
-bash
-Copiar código
+
 uvicorn app.main:app --reload
 O servidor será iniciado em:
 👉 http://127.0.0.1:8000
@@ -117,8 +107,6 @@ POST	/users/	Cria um novo usuário com senha criptografada
 
 Exemplo de criação
 
-json
-Copiar código
 {
   "name": "Emillyn Dev",
   "email": "emillyn@example.com",
@@ -138,8 +126,6 @@ GET	/favorites/share/{user_id}?format=html	Gera uma página pública com os favo
 
 Exemplo de criação
 
-json
-Copiar código
 {
   "movie_id": 603692,
   "title": "John Wick 4",
@@ -147,6 +133,21 @@ Copiar código
   "vote_average": 8.9,
   "user_id": 1
 }
+🧩 Visão Técnica
+A aplicação foi construída com foco em modularidade e boas práticas:
+
+Camadas separadas: routers, models, schemas e conexão de banco isoladas.
+
+ORM tipado (SQLModel): garante integridade e produtividade.
+
+Senhas criptografadas com bcrypt.
+
+Tratamento de exceções e rollback em transações críticas.
+
+Integração externa com TMDb API via requests assíncronos.
+
+CORS configurado para integração futura com frontend React.
+
 🛠️ Banco de Dados
 Tabelas geradas automaticamente no PostgreSQL:
 
@@ -163,34 +164,51 @@ A criação é feita automaticamente na inicialização do app (on_startup em ma
 💡 Decisões Técnicas
 FastAPI + SQLModel: escolhido pela produtividade e tipagem forte, além de integração nativa com Swagger.
 
-Arquitetura modular com divisão clara entre routers, models, schemas e database.
+Arquitetura modular com divisão clara entre camadas.
 
 Senhas criptografadas com bcrypt.
 
-Tratamento de exceções com rollback e mensagens HTTP padronizadas.
+CORS configurado para integração com o frontend React.
 
-CORS configurado para permitir integração com o frontend React.
+Tratamento de exceções e mensagens HTTP padronizadas.
 
-Rota /favorites/share permite visualização pública (HTML) e API (JSON).
+Rota /favorites/share permite visualização pública (HTML/JSON).
 
 🧩 Melhorias Futuras
-Implementar autenticação JWT.
+🔐 Implementar autenticação JWT.
 
-Adicionar testes automatizados (Pytest).
+🧪 Adicionar testes automatizados (Pytest).
 
-Criar frontend em React + Vite integrado a esta API.
+💻 Criar frontend em React + Vite integrado à API.
 
-Fazer deploy completo (Render ou Railway) com documentação pública.
+☁️ Deploy completo no Render/Railway com documentação pública.
 
-☁️ Deploy (opcional +1 ponto)
-Para ganhar o ponto extra do desafio, é possível:
+☁️ Deploy (Opcional +1 ponto)
+Para o desafio, é possível:
 
 Hospedar o backend no Render ou Railway.
 
 Deploy do frontend (quando pronto) na Vercel.
 
+📄 Detalhes sobre o .env
+🔐 Sobre a senha do PostgreSQL
+Quando você instalou o PostgreSQL, o instalador pediu uma senha para o usuário postgres.
+Essa é a senha usada no .env.
+Se esqueceu, você pode redefinir via pgAdmin → Login/Group Roles → postgres → Properties → Definition → Password.
+
+Exemplo:
+
+bash
+Copiar código
+DATABASE_URL=postgresql+psycopg2://postgres:minhasenha123@localhost:5432/filmesdb
+🎬 Sobre a chave TMDb
+Crie sua conta em https://www.themoviedb.org/
+→ Vá em Configurações → API → Create API Key (Developer).
+A TMDb gerará uma chave como esta:
+TMDB_API_KEY=ab1234cdef56789ghijklm
+
+
 👩‍💻 Autora
-Emillyn Dev
+Emillyn Baruta Machado
 💼 Desenvolvedora Full Stack Python | React
-📧 emillyn@example.com
-🌐 GitHub: github.com/emillyn-dev
+🔗 LinkedIn • GitHub
