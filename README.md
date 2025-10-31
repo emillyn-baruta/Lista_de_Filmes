@@ -1,214 +1,323 @@
-# 🎬 Lista de Filmes  
+🎬 Lista de Filmes – Desafio Elite Dev (Verzel)
 
-Aplicação Full Stack desenvolvida para o **Desafio Elite Dev (Verzel)**.  
-Permite ao usuário **pesquisar filmes pela API do TMDb** e **salvar seus favoritos** em uma lista pessoal.  
-O backend foi construído em **Python (FastAPI)** com **PostgreSQL + SQLModel**, seguindo boas práticas de arquitetura, segurança e documentação interativa via **Swagger**.
+Aplicação Full Stack desenvolvida para o Desafio Elite Dev da Verzel, unindo FastAPI (Python) no back-end e React (Vite) no front-end.
+O sistema permite pesquisar filmes pela API do TMDb, salvar favoritos e compartilhar listas personalizadas.
 
----
+🧠 Stack Tecnológica
+Categoria	Tecnologia
+Frontend	React + Vite + Axios
+Backend	FastAPI (Python 3.10+)
+Banco de Dados	PostgreSQL
+ORM	SQLModel
+Integração Externa	TMDb API
+Autenticação	Passlib (bcrypt)
+Documentação	Swagger UI
+Ambiente	dotenv
+Deploy	Vercel (frontend) + Render/Railway (backend)
+🚀 Funcionalidades
+🔧 Backend (FastAPI)
 
-## 🚀 Funcionalidades Principais
-- 🔍 Buscar filmes pela API do **TMDb**  
-- 👤 Criar e listar **usuários**  
-- ⭐ Adicionar ou remover **filmes favoritos**  
-- 🌐 Gerar uma **página pública** com os favoritos de cada usuário (HTML ou JSON)
+CRUD de usuários e favoritos
 
-Toda a persistência é feita com **PostgreSQL**, utilizando **SQLModel** como ORM.
+Busca de filmes via TMDb API
 
----
+Integração total com PostgreSQL
 
-## 🧠 Stack Tecnológica
+Rotas documentadas no Swagger UI
 
-| Categoria | Tecnologia |
-|------------|-------------|
-| Backend | **FastAPI** |
-| ORM | **SQLModel** |
-| Banco de Dados | **PostgreSQL** |
-| Integração Externa | **TMDb API** |
-| Autenticação de Senha | **Passlib (bcrypt)** |
-| Variáveis de Ambiente | **python-dotenv** |
-| Testes via Interface | **Swagger UI (/docs)** |
-| Deploy Opcional | **Render**, **Vercel (frontend)** ou **Railway** |
+Senhas criptografadas com bcrypt
 
----
+Compartilhamento de lista pública
 
-## 🗂️ Estrutura de Pastas
+💻 Frontend (React)
 
-backend/
+Busca dinâmica de filmes
+
+Exibição de pôsteres e notas
+
+Adicionar/remover favoritos
+
+Visualizar lista de filmes salvos
+
+Comunicação direta com o backend via Axios
+
+🗂️ Estrutura de Pastas
+desafio-elite-dev/
 │
-├── app/
-│ ├── main.py # Ponto de entrada do servidor FastAPI
-│ ├── database/
-│ │ ├── connection.py # Conexão e criação das tabelas no PostgreSQL
-│ │ └── database.db
-│ ├── models/ # Modelos SQLModel (tabelas)
-│ │ ├── user.py
-│ │ └── favorite.py
-│ ├── routers/ # Rotas da API (divididas por contexto)
-│ │ ├── user_router.py
-│ │ ├── favorite_router.py
-│ │ └── movies.py
-│ ├── schemas/ # Schemas Pydantic (validação e resposta)
-│ │ ├── user.py
-│ │ └── favorite.py
-│ └── init.py
+├── .venv/
 │
-├── .env # Configurações sensíveis (chaves e banco)
-├── requirements.txt # Dependências do projeto
+├── backend/
+│   └── app/
+│       ├── __pycache__/
+│       ├── main.py
+│       │
+│       ├── core/
+│       │   ├── __pycache__/
+│       │   └── security.py
+│       │
+│       ├── database/
+│       │   ├── __pycache__/
+│       │   ├── connection.py
+│       │   └── database.db
+│       │
+│       ├── models/
+│       │   ├── __pycache__/
+│       │   ├── __init__.py
+│       │   ├── favorite.py
+│       │   └── user.py
+│       │
+│       ├── routers/
+│       │   ├── __pycache__/
+│       │   ├── __init__.py
+│       │   ├── auth.py
+│       │   ├── favorite_router.py
+│       │   ├── movies.py
+│       │   ├── user_router.py
+│       │   └── main.py
+│       │
+│       └── schemas/
+│           ├── __pycache__/
+│           ├── __init__.py
+│           ├── favorite.py
+│           ├── main.py
+│           └── user.py
+│           └── user.py
+│
+│   ├── test_tmdb_speed.py
+│   ├── requirements.txt
+│
+│
+├── frontend/
+│   ├── node_modules/
+│   ├── public/
+│   ├── vite.svg
+│   │
+│   ├── src/
+│   │   ├── assets/
+│   │   │   └── verzel_logo.svg
+│   │   │
+│   │   ├── components/
+│   │   │   ├── AuthForms.css
+│   │   │   ├── AuthForm.jsx
+│   │   │   ├── FavoriteList.jsx
+│   │   │   ├── Header.css
+│   │   │   ├── Header.jsx
+│   │   │   └── MovieSearch.jsx
+│   │   │
+│   │   ├── pages/
+│   │   │   ├── Favorites.css
+│   │   │   ├── Favorites.jsx
+│   │   │   ├── Login.css
+│   │   │   └── Login.jsx
+│   │   │
+│   │   ├── services/
+│   │   │   └── api.js
+│   │   │
+│   │   ├── styles/
+│   │   │   └── global.css
+│   │   │
+│   │   ├── App.jsx
+│   │   ├── index.css
+│   │   └── main.jsx
+│   │
+│   ├── .env
+│   ├── .eslintrc.config.js
+│   ├── index.html
+│   ├── package.json
+│   ├── package-lock.json
+│   ├── README.md
+│   ├── vite.config.js
+│   └── .gitignore
+│
+├── .gitignore
 └── README.md
 
+⚙️ Como Rodar o Projeto Completo
+🧩 1️⃣ Clonar o repositório
+git clone https://github.com/emillyn-baruta/desafio-elite-dev.git
+cd desafio-elite-dev
+
+🗄️ 2️⃣ Rodar o Backend (FastAPI)
+
+Entre na pasta do backend:
+
+cd backend
 
 
----
+Crie e ative o ambiente virtual:
 
-## ⚙️ Configuração do Ambiente
-
-### 1️⃣ Pré-requisitos
-- Python 3.10+
-- PostgreSQL instalado e em execução
-- Chave de API válida do [The Movie Database (TMDb)](https://developer.themoviedb.org/)
-
----
-
-### 2️⃣ Clonar o repositório
-
-
-git clone https://github.com/emillyn-baruta/Lista_de_Filmes
-cd desafio-elite-dev/backend
-3️⃣ Criar e ativar ambiente virtual
-
-python -m venv venv
-venv\Scripts\activate     # Windows
+python -m venv .venv
+.venv\Scripts\activate  # Windows
 # ou
-source venv/bin/activate  # Linux/Mac
-4️⃣ Instalar dependências
+source .venv/bin/activate  # Linux/Mac
+
+
+Instale as dependências:
 
 pip install -r requirements.txt
-5️⃣ Configurar o arquivo .env
-Na raiz do projeto (backend/), crie um arquivo chamado .env com o seguinte conteúdo:
 
-DATABASE_URL=postgresql+psycopg2://postgres:SENHA@localhost:5432/NOMEDOBANCO
+
+Configure o .env:
+
+DATABASE_URL=postgresql+psycopg2://postgres:emi123@localhost:5432/postgres
 TMDB_API_KEY=sua_chave_tmdb_aqui
-💡 Nota: Caso tenha dúvidas sobre onde encontrar sua senha do PostgreSQL ou gerar a TMDB API Key, veja a seção 📄 Detalhes sobre o .env.
+SECRET_KEY=supersegredo_verzel_filmes_123
+ALGORITHM=HS256
+ACCESS_TOKEN_EXPIRE_MINUTES=60
 
-6️⃣ Rodar a aplicação
+
+Inicie o servidor:
 
 uvicorn app.main:app --reload
-O servidor será iniciado em:
-👉 http://127.0.0.1:8000
 
-Documentação interativa (Swagger):
-👉 http://127.0.0.1:8000/docs
 
-🧩 Endpoints Principais
-👤 Usuários (/users)
-Método	Endpoint	Descrição
-GET	/users/	Lista todos os usuários cadastrados
-POST	/users/	Cria um novo usuário com senha criptografada
+✅ Acesse a API:
 
-Exemplo de criação
+http://127.0.0.1:8000
 
-{
-  "name": "Emillyn Dev",
-  "email": "emillyn@example.com",
-  "password": "123456"
-}
-🎞️ Filmes (/movies)
-Método	Endpoint	Descrição
-GET	/movies/search/?query=batman	Busca filmes pelo nome via TMDb
-GET	/movies/{movie_id}	Retorna detalhes completos de um filme
+Swagger: http://127.0.0.1:8000/docs
 
-⭐ Favoritos (/favorites)
-Método	Endpoint	Descrição
-POST	/favorites/	Adiciona um filme aos favoritos de um usuário
-GET	/favorites/user/{user_id}	Lista os favoritos de um usuário
-DELETE	/favorites/{favorite_id}	Remove um favorito
-GET	/favorites/share/{user_id}?format=html	Gera uma página pública com os favoritos
+💻 3️⃣ Rodar o Frontend (React)
 
-Exemplo de criação
+Entre na pasta do frontend:
 
-{
-  "movie_id": 603692,
-  "title": "John Wick 4",
-  "poster_path": "https://image.tmdb.org/t/p/w500/abc123.jpg",
-  "vote_average": 8.9,
-  "user_id": 1
-}
-🧩 Visão Técnica
-A aplicação foi construída com foco em modularidade e boas práticas:
+cd ../frontend
 
-Camadas separadas: routers, models, schemas e conexão de banco isoladas.
 
-ORM tipado (SQLModel): garante integridade e produtividade.
+Instale as dependências:
 
-Senhas criptografadas com bcrypt.
+npm install
 
-Tratamento de exceções e rollback em transações críticas.
 
-Integração externa com TMDb API via requests assíncronos.
+Crie o arquivo .env na pasta frontend/:
 
-CORS configurado para integração futura com frontend React.
+VITE_TMDB_API_KEY=sua_chave_tmdb_aqui
+VITE_API_URL=http://127.0.0.1:8000
 
-🛠️ Banco de Dados
-Tabelas geradas automaticamente no PostgreSQL:
 
-users
+Inicie o servidor React:
 
-id, name, email, password (bcrypt hash)
+npm run dev
 
-favorites
 
-id, title, movie_id, poster_path, vote_average, user_id (FK → users)
+✅ Acesse o site: http://localhost:5173
 
-A criação é feita automaticamente na inicialização do app (on_startup em main.py).
+🔗 Integração Front–Back
 
-💡 Decisões Técnicas
-FastAPI + SQLModel: escolhido pela produtividade e tipagem forte, além de integração nativa com Swagger.
+O frontend consome a API via Axios, configurado em frontend/src/services/api.js:
 
-Arquitetura modular com divisão clara entre camadas.
+import axios from "axios";
 
-Senhas criptografadas com bcrypt.
+const api = axios.create({
+  baseURL: import.meta.env.VITE_API_URL,
+});
 
-CORS configurado para integração com o frontend React.
+export default api;
 
-Tratamento de exceções e mensagens HTTP padronizadas.
+🧩 Principais Componentes do Frontend
+🎞️ MovieCard.jsx
 
-Rota /favorites/share permite visualização pública (HTML/JSON).
+Exibe cada filme com:
 
-🧩 Melhorias Futuras
-🔐 Implementar autenticação JWT.
+Pôster
 
-🧪 Adicionar testes automatizados (Pytest).
+Título
 
-💻 Criar frontend em React + Vite integrado à API.
+Nota
 
-☁️ Deploy completo no Render/Railway com documentação pública.
+Botão de Favoritar
 
-☁️ Deploy (Opcional +1 ponto)
-Para o desafio, é possível:
+🔍 SearchBar.jsx
 
-Hospedar o backend no Render ou Railway.
+Input controlado para buscar filmes pela API TMDb, com atualização em tempo real.
 
-Deploy do frontend (quando pronto) na Vercel.
+⭐ FavoritesList.jsx
 
-📄 Detalhes sobre o .env
-🔐 Sobre a senha do PostgreSQL
-Quando você instalou o PostgreSQL, o instalador pediu uma senha para o usuário postgres.
-Essa é a senha usada no .env.
-Se esqueceu, você pode redefinir via pgAdmin → Login/Group Roles → postgres → Properties → Definition → Password.
+Lista os filmes favoritos salvos no banco.
 
-Exemplo:
+🌐 Rotas da Aplicação React
+Caminho	Página	Descrição
+/	Home	Busca de filmes
+/favorites	Favoritos	Exibe lista salva
+/share/:userId	Compartilhar	Exibe lista pública via backend
+🧾 Endpoints do Backend
+👤 Usuários
 
-bash
-Copiar código
-DATABASE_URL=postgresql+psycopg2://postgres:minhasenha123@localhost:5432/filmesdb
-🎬 Sobre a chave TMDb
-Crie sua conta em https://www.themoviedb.org/
-→ Vá em Configurações → API → Create API Key (Developer).
-A TMDb gerará uma chave como esta:
-TMDB_API_KEY=ab1234cdef56789ghijklm
+POST /users/ – Criar usuário
 
+GET /users/ – Listar todos
+
+🎬 Filmes
+
+GET /movies/search/?query=matrix – Buscar filmes
+
+GET /movies/{id} – Detalhes do filme
+
+⭐ Favoritos
+
+POST /favorites/ – Adicionar favorito
+
+GET /favorites/user/{id} – Ver favoritos
+
+DELETE /favorites/{id} – Remover favorito
+
+📄 Banco de Dados (PostgreSQL)
+
+Tabelas criadas automaticamente via SQLModel:
+
+TABLE users (
+  id SERIAL PRIMARY KEY,
+  name VARCHAR(100),
+  email VARCHAR(100) UNIQUE,
+  password VARCHAR(200)
+);
+
+TABLE favorites (
+  id SERIAL PRIMARY KEY,
+  title VARCHAR(200),
+  movie_id INT,
+  poster_path VARCHAR(300),
+  vote_average FLOAT,
+  user_id INT REFERENCES users(id)
+);
+
+☁️ Deploy
+Serviço	Uso	Link (exemplo)
+Render	Backend (FastAPI)	https://desafio-filmes-api.onrender.com
+
+Vercel	Frontend (React)	https://desafio-filmes.vercel.app
+Configurar variáveis de ambiente no deploy:
+
+Render / Railway:
+
+DATABASE_URL
+
+TMDB_API_KEY
+
+SECRET_KEY
+
+Vercel:
+
+VITE_API_URL
+
+VITE_TMDB_API_KEY
+
+✨ Melhorias Futuras
+
+Login e autenticação com JWT
+
+Interface responsiva com Tailwind CSS
+
+Upload de imagens personalizadas
+
+Testes automatizados (Pytest e Jest)
+
+Página pública de compartilhamento visual
 
 👩‍💻 Autora
+
 Emillyn Baruta Machado
-💼 Desenvolvedora Full Stack Python | React
-🔗 LinkedIn • GitHub
+💻 Desenvolvedora Full Stack Python | React
+📍 Curitiba – PR
+🔗 (https://www.linkedin.com/in/emillyn-baruta-machado-/)
+🔗 GitHub: https://github.com/emillyn-baruta
