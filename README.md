@@ -282,37 +282,11 @@ TABLE favorites (
 );
 
 ☁️ Deploy
-Serviço	Uso	Link (exemplo)
-Render	Backend (FastAPI)	https://desafio-filmes-api.onrender.com
+Serviço	Uso	Link 
 
-Vercel	Frontend (React)	https://desafio-filmes.vercel.app
-Configurar variáveis de ambiente no deploy:
 
-Render / Railway:
+Vercel	Frontend (React)	https://lista-filmes-omega.vercel.app/
 
-DATABASE_URL
-
-TMDB_API_KEY
-
-SECRET_KEY
-
-Vercel:
-
-VITE_API_URL
-
-VITE_TMDB_API_KEY
-
-✨ Melhorias Futuras
-
-Login e autenticação com JWT
-
-Interface responsiva com Tailwind CSS
-
-Upload de imagens personalizadas
-
-Testes automatizados (Pytest e Jest)
-
-Página pública de compartilhamento visual
 
 👩‍💻 Autora
 
